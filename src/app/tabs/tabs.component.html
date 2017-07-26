@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" [ngClass]="{active: chosenList === 'all'}" (click)="setFilter('all')"><a>All</a></li>
+  <li role="presentation" [ngClass]="{active: chosenList === 'left'}" (click)="setFilter('left')"><a>Left</a></li>
+  <li role="presentation" [ngClass]="{active: chosenList === 'right'}" (click)="setFilter('right')"><a>Right</a></li>
+  <li role="presentation" [ngClass]="{active: chosenList === 'middle'}" (click)="setFilter('middle')"><a>Middle</a></li>
+  <li role="presentation" [ngClass]="{active: chosenList === 'unknown'}" (click)="setFilter('unknown')"><a>Unknown</a></li>
+</ul>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-list
+        [politics]="showList()"
+        (modifiedPolitician)="changeOrientation($event)">
+      </app-list>
+    </div>
+  </div>
+</div>
