@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PoliticService } from '../../../politics.service';
 
 @Component({
   selector: 'app-item',
@@ -7,15 +8,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
   @Input() politic;
-  @Output() modifiedPolitician = new EventEmitter<{name: string, orientation: string}>();
+  polService: PoliticService;
 
-  constructor() { }
+  constructor(polService: PoliticService) {
+    this.polService = polService;
+   }
 
   ngOnInit() {
   }
 
   chooseOrientation(orientation) {
-    this.modifiedPolitician.emit({name: this.politic.name, orientation: orientation});
+    this.polService.changeOrientation({name: this.politic.name, orientation: orientation });
   }
 
 }

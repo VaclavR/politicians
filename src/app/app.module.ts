@@ -1,22 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { ListComponent } from './tabs/list/list.component';
-import { ItemComponent } from './tabs/list/item/item.component';
+import { HeaderComponent } from './header/header.component';
+
+import { PoliticService } from './politics.service';
+import { LogService } from './log.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TabsComponent,
-    ListComponent,
-    ItemComponent
+    HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [PoliticService, LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

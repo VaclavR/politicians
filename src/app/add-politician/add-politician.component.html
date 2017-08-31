@@ -1,0 +1,24 @@
+<form (ngSubmit)="onFormSubmit(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="name">Politician Name</label>
+    <input
+      id="name"
+      type="text"
+      class="form-control"
+      name="name"
+      ngModel
+      required
+      #nameControl="ngModel">
+  </div>
+  <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">Please enter a name!</span>
+  <div class="form-group">
+    <label for="orientation">Orientation</label>
+    <select class="form-control" name="value" id="orientation" [ngModel]="defaultValue">
+      <option *ngFor="let option of options"
+      [value]="option.value">
+        {{option.display}}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add new Politician</button>
+</form>
